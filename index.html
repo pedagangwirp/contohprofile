@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pedagang Warga Indo — Official Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --bg:#0c0800;
+      --surface:#120e02;
+      --surface2:#1c1604;
+      --border:rgba(244,196,48,0.1);
+      --gold:#f4c430;
+      --gold2:#fbbf24;
+      --gold3:#c8960c;
+      --red2:#c1121f;
+      --text:#f0e0c0;
+      --muted:#7a6a4a;
+    }
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;overflow-x:hidden}
+    body::before{content:"";position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:0.5}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 3.5rem;background:rgba(12,8,0,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+    .nav-logo{display:flex;align-items:center;gap:0.9rem}
+    .nav-logo img{height:46px;width:auto;filter:drop-shadow(0 0 10px rgba(244,196,48,0.4))}
+    .nav-brand{font-family:"Playfair Display",serif;font-weight:900;font-size:1rem;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.2}
+    .nav-sub{font-size:0.62rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase}
+    .nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:0.87rem;font-weight:500;transition:color 0.2s}
+    .nav-links a:hover{color:var(--gold)}
+    .nav-order{background:linear-gradient(135deg,var(--gold),var(--gold3));color:#111!important;padding:0.48rem 1.3rem;border-radius:100px;font-weight:700!important;transition:transform 0.2s,box-shadow 0.2s!important}
+    .nav-order:hover{transform:translateY(-2px)!important;box-shadow:0 6px 20px rgba(244,196,48,0.3)!important}
+
+    /* HERO */
+    .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 5rem;overflow:hidden;z-index:1}
+    .hero-glow{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(244,196,48,0.1) 0%,transparent 65%);top:50%;left:50%;transform:translate(-50%,-55%);pointer-events:none}
+    .hero-glow2{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(139,0,0,0.1) 0%,transparent 65%);bottom:15%;right:15%;pointer-events:none}
+
+    .hero-logo{width:155px;height:auto;filter:drop-shadow(0 0 40px rgba(244,196,48,0.5));animation:float 3.5s ease-in-out infinite,fadeUp 0.8s ease both;margin-bottom:1.5rem}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+    .hero-wirp-badge{display:inline-flex;align-items:center;gap:0.6rem;margin-bottom:1.5rem;animation:fadeUp 0.8s 0.05s ease both}
+    .hero-wirp-badge img{height:26px;filter:drop-shadow(0 0 6px rgba(230,57,70,0.5))}
+    .hero-wirp-badge span{font-size:0.73rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;font-weight:600}
+
+    .hero-badge{display:inline-flex;align-items:center;gap:0.5rem;border:1px solid rgba(244,196,48,0.35);border-radius:100px;padding:0.35rem 1rem;font-size:0.75rem;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;font-weight:600;margin-bottom:1.5rem;animation:fadeUp 0.8s 0.1s ease both}
+    .hero-badge::before{content:"";width:6px;height:6px;background:var(--gold);border-radius:50%;animation:blink 1.5s infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+
+    h1{font-family:"Playfair Display",serif;font-size:clamp(3rem,7vw,5.5rem);font-weight:900;line-height:1.05;letter-spacing:-0.02em;max-width:850px;animation:fadeUp 0.8s 0.15s ease both}
+    .gold-txt{background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .red-txt{background:linear-gradient(135deg,var(--red2),#ff4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+    .hero-sub{max-width:580px;color:var(--muted);font-size:1.05rem;line-height:1.75;margin:1.5rem auto 2.5rem;animation:fadeUp 0.8s 0.2s ease both}
+    .hero-sub strong{color:var(--text)}
+
+    .hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fadeUp 0.8s 0.25s ease both}
+    .btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold3));color:#111;border:none;padding:0.9rem 2.2rem;border-radius:100px;font-family:"DM Sans",sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem}
+    .btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(244,196,48,0.35)}
+    .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border);padding:0.9rem 2.2rem;border-radius:100px;font-family:"DM Sans",sans-serif;font-weight:500;font-size:0.95rem;cursor:pointer;transition:border-color 0.2s,background 0.2s;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem}
+    .btn-ghost:hover{border-color:rgba(244,196,48,0.3);background:rgba(244,196,48,0.04)}
+
+    .hero-stats{display:flex;gap:0;margin-top:4rem;justify-content:center;animation:fadeUp 0.8s 0.3s ease both;background:var(--surface);border:1px solid var(--border);border-radius:20px;overflow:hidden}
+    .stat{text-align:center;padding:1.5rem 2.5rem}
+    .stat+.stat{border-left:1px solid var(--border)}
+    .stat-num{font-family:"Playfair Display",serif;font-size:2rem;font-weight:900;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .stat-label{font-size:0.75rem;color:var(--muted);margin-top:0.2rem;letter-spacing:0.04em;text-transform:uppercase}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+    /* MARQUEE */
+    .marquee-wrap{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:0.85rem 0;background:var(--surface)}
+    .marquee{display:flex;animation:marquee 28s linear infinite;white-space:nowrap}
+    .marquee-item{font-size:0.78rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);padding:0 1.5rem}
+    .marquee-sep{color:var(--gold);font-size:0.7rem}
+    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    section{position:relative;z-index:1}
+    .section-label{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--gold);font-weight:700;margin-bottom:0.7rem}
+    .section-title{font-family:"Playfair Display",serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:900;letter-spacing:-0.02em;line-height:1.1}
+    .divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:0 4rem}
+
+    /* ABOUT */
+    .about{padding:7rem 4rem;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+    .about-text p{color:var(--muted);line-height:1.8;margin-top:1.1rem;font-size:0.96rem}
+    .about-text strong{color:var(--text)}
+    .about-pills{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:1.8rem}
+    .pill{display:inline-flex;align-items:center;gap:0.4rem;background:var(--surface2);border:1px solid var(--border);border-radius:100px;padding:0.38rem 1rem;font-size:0.78rem;font-weight:500;color:var(--text)}
+    .pill-dot{width:6px;height:6px;border-radius:50%;background:var(--gold)}
+    .about-card{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:2.2rem;position:relative;overflow:hidden}
+    .about-card::before{content:"";position:absolute;top:-30%;right:-20%;width:280px;height:280px;background:radial-gradient(circle,rgba(244,196,48,0.08),transparent 70%);pointer-events:none}
+    .info-block{display:flex;flex-direction:column;gap:1rem}
+    .info-row{display:flex;align-items:center;gap:1rem;padding:1rem 1.2rem;background:var(--surface2);border:1px solid var(--border);border-radius:14px;transition:border-color 0.2s}
+    .info-row:hover{border-color:rgba(244,196,48,0.25)}
+    .info-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+    .info-title{font-weight:600;font-size:0.9rem;color:var(--text)}
+    .info-sub{font-size:0.73rem;color:var(--muted);margin-top:0.1rem}
+    .info-action{margin-left:auto}
+    .btn-sm-gold{font-size:0.75rem;font-weight:700;padding:0.38rem 1rem;border-radius:100px;background:linear-gradient(135deg,var(--gold),var(--gold3));color:#111;border:none;cursor:pointer;font-family:"DM Sans",sans-serif;text-decoration:none;display:inline-block;transition:opacity 0.2s}
+    .btn-sm-disc{font-size:0.75rem;font-weight:700;padding:0.38rem 1rem;border-radius:100px;background:#5865f2;color:#fff;border:none;cursor:pointer;font-family:"DM Sans",sans-serif;text-decoration:none;display:inline-block;transition:opacity 0.2s}
+    .btn-sm-disc:hover,.btn-sm-gold:hover{opacity:0.85}
+
+    /* WHY */
+    .why{padding:7rem 4rem;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .why-inner{max-width:1200px;margin:0 auto}
+    .why-header{text-align:center;margin-bottom:4rem}
+    .why-header p{color:var(--muted);margin-top:1rem;font-size:0.97rem;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.7}
+    .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(244,196,48,0.07);border:1px solid var(--border);border-radius:24px;overflow:hidden}
+    .why-card{background:var(--surface);padding:2.5rem;transition:background 0.2s}
+    .why-card:hover{background:var(--surface2)}
+    .why-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.3rem}
+    .ic1{background:rgba(244,196,48,0.12)} .ic2{background:rgba(193,18,31,0.1)} .ic3{background:rgba(88,101,242,0.1)}
+    .ic4{background:rgba(52,211,153,0.1)} .ic5{background:rgba(251,146,60,0.1)} .ic6{background:rgba(167,139,250,0.1)}
+    .why-title{font-family:"Playfair Display",serif;font-weight:700;font-size:1.05rem;margin-bottom:0.6rem}
+    .why-desc{color:var(--muted);font-size:0.87rem;line-height:1.65}
+
+    /* MANAGEMENT */
+    .mgmt-section{padding:7rem 4rem;max-width:1200px;margin:0 auto}
+    .mgmt-header-row{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem;flex-wrap:wrap;gap:1rem}
+    .total-badge{display:inline-flex;align-items:center;gap:0.5rem;background:var(--surface2);border:1px solid var(--border);border-radius:100px;padding:0.5rem 1.2rem;font-size:0.82rem;color:var(--muted)}
+    .total-badge strong{color:var(--gold)}
+    .mgmt-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+    .mgmt-group-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:border-color 0.2s}
+    .mgmt-group-card:hover{border-color:rgba(244,196,48,0.2)}
+    .mgmt-group-head{padding:1.1rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:0.7rem}
+    .mgmt-group-name{font-family:"Playfair Display",serif;font-weight:700;font-size:0.9rem}
+    .mgmt-group-count{margin-left:auto;font-size:0.68rem;font-weight:700;background:rgba(244,196,48,0.12);color:var(--gold);border:1px solid rgba(244,196,48,0.2);padding:0.2rem 0.6rem;border-radius:100px}
+    .mgmt-members{padding:0.8rem 1rem}
+    .mgmt-member{display:flex;align-items:center;gap:0.7rem;padding:0.55rem 0.5rem;border-radius:10px;transition:background 0.15s}
+    .mgmt-member:hover{background:var(--surface2)}
+    .mgmt-avatar{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:800;flex-shrink:0;color:#111;font-family:"Playfair Display",serif}
+    .av-gold{background:linear-gradient(135deg,var(--gold),var(--gold2))}
+    .av-red{background:linear-gradient(135deg,var(--red2),#ff6b6b)}
+    .av-blue{background:linear-gradient(135deg,#5865f2,#818cf8);color:#fff!important}
+    .av-green{background:linear-gradient(135deg,#34d399,#6ee7f7)}
+    .av-purple{background:linear-gradient(135deg,#a78bfa,#f472b6);color:#fff!important}
+    .av-orange{background:linear-gradient(135deg,#fb923c,#fbbf24)}
+    .mgmt-name{font-size:0.83rem;font-weight:500;color:var(--text)}
+    .inactive-tag{font-size:0.66rem;color:var(--muted);margin-left:0.3rem;font-style:italic}
+    .mgmt-wide{margin-top:1.5rem}
+    .mgmt-members-grid{display:grid;grid-template-columns:repeat(4,1fr);padding:0.8rem 1rem}
+
+    /* CTA */
+    .cta{padding:7rem 4rem;text-align:center;position:relative;overflow:hidden}
+    .cta-bg{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(244,196,48,0.07) 0%,transparent 60%)}
+    .cta-inner{position:relative;max-width:680px;margin:0 auto}
+    .cta-inner h2{font-family:"Playfair Display",serif;font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:900;letter-spacing:-0.02em;line-height:1.05;margin-bottom:1.2rem}
+    .cta-inner p{color:var(--muted);font-size:1rem;margin-bottom:2.5rem;line-height:1.7}
+    .cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+    /* FOOTER */
+    footer{border-top:1px solid var(--border);padding:2.5rem 4rem;display:flex;align-items:center;justify-content:space-between;background:var(--surface)}
+    .footer-left{display:flex;align-items:center;gap:1rem}
+    .foot-main{height:50px;filter:drop-shadow(0 0 10px rgba(244,196,48,0.35))}
+    .foot-div{width:1px;height:36px;background:var(--border)}
+    .foot-wirp{height:28px;filter:drop-shadow(0 0 6px rgba(230,57,70,0.4));opacity:0.7}
+    .footer-brand{font-family:"Playfair Display",serif;font-weight:900;font-size:0.97rem;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .footer-copy{font-size:0.7rem;color:var(--muted);margin-top:0.2rem}
+    .footer-credit{font-size:0.7rem;color:var(--muted);margin-top:0.15rem}
+    .footer-credit span{color:var(--gold);font-weight:600}
+    .footer-links{display:flex;gap:2rem;list-style:none}
+    .footer-links a{font-size:0.82rem;color:var(--muted);text-decoration:none;transition:color 0.2s}
+    .footer-links a:hover{color:var(--gold)}
+
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    @media(max-width:768px){
+      nav{padding:1rem 1.5rem} .nav-links{display:none}
+      .about,.mgmt-grid{grid-template-columns:1fr;gap:2rem}
+      .about,.mgmt-section,.why{padding:4rem 1.5rem}
+      .why-grid{grid-template-columns:1fr}
+      .mgmt-members-grid{grid-template-columns:repeat(2,1fr)}
+      .hero-stats{flex-direction:column}
+      .stat+.stat{border-left:none;border-top:1px solid var(--border)}
+      footer{flex-direction:column;gap:2rem;text-align:center;padding:2rem 1.5rem}
+      .cta{padding:4rem 1.5rem}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="logo_pedagang.png" alt="Pedagang Warga Indo"/>
+    <div>
+      <div class="nav-brand">Pedagang Warga Indo</div>
+      <div class="nav-sub">Instansi Kuliner · WIRP</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">Tentang</a></li>
+    <li><a href="#why">Layanan</a></li>
+    <li><a href="#management">Management</a></li>
+    <li><a href="https://pedagangwirp.github.io/OrderPwi/" target="_blank" class="nav-order">🍽️ Order Sekarang</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <img src="logo_pedagang.png" alt="Pedagang Warga Indo" class="hero-logo"/>
+  <div class="hero-wirp-badge">
+    <img src="logo_wirp.png" alt="WIRP"/>
+    <span>Bagian dari Warga Indo Roleplay</span>
+  </div>
+  <div class="hero-badge">🟢 Instansi Aktif</div>
+  <h1><span class="gold-txt">Pedagang</span><br/>Warga Indo<span class="red-txt">.</span></h1>
+  <p class="hero-sub">Instansi kuliner terbesar di server <strong>Warga Indo Roleplay (WIRP)</strong>. Kami menyajikan berbagai makanan dan minuman berkualitas untuk warga WIRP, dengan sistem order yang mudah dan tim yang berdedikasi.</p>
+  <div class="hero-btns">
+    <a href="https://pedagangwirp.github.io/OrderPwi/" target="_blank" class="btn-gold">🍽️ Pesan Sekarang</a>
+    <a href="https://discord.gg/8KGVBtvmBj" target="_blank" class="btn-ghost">💬 Discord Lounge</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num" data-target="32">0</div><div class="stat-label">Total Staff</div></div>
+    <div class="stat"><div class="stat-num" data-target="7">0</div><div class="stat-label">Divisi</div></div>
+    <div class="stat"><div class="stat-num" data-target="100">0</div><div class="stat-label">Menu Tersedia</div></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee">
+    <span class="marquee-item">Pedagang Warga Indo</span><span class="marquee-sep"> ✦ </span>
+    <span class="marquee-item">Makanan & Minuman</span><span class="marquee-sep"> ✦ </span>
+    <span class="marquee-item">Order Online</span><span class="marquee-sep"> ✦ </span>
+    <span class="marquee-item">Instansi WIRP</span><span class="marquee-sep"> ✦ </span>
+    <span class="marquee-item">Lounge Aktif</span><span class="marquee-sep"> ✦ </span>
+    <span class="marquee-item">32 Staff Berdedikasi</span><span class="marquee-sep"> ✦ </span>
+    <span class="marquee-item">Pedagang Warga Indo</span><span class="marquee-sep"> ✦ </span>
+    <span class="marquee-item">Makanan & Minuman</span><span class="marquee-sep"> ✦ </span>
+    <span class="marquee-item">Order Online</span><span class="marquee-sep"> ✦ </span>
+    <span class="marquee-item">Instansi WIRP</span><span class="marquee-sep"> ✦ </span>
+    <span class="marquee-item">Lounge Aktif</span><span class="marquee-sep"> ✦ </span>
+    <span class="marquee-item">32 Staff Berdedikasi</span><span class="marquee-sep"> ✦ </span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-text reveal">
+    <div class="section-label">Tentang Kami</div>
+    <h2 class="section-title">Instansi Kuliner<br/>Terbaik di WIRP</h2>
+    <p><strong>Pedagang Warga Indo</strong> adalah instansi yang bergerak di bidang kuliner dan lounge dalam server <strong>Warga Indo Roleplay (WIRP)</strong>. Kami hadir untuk memenuhi kebutuhan makan dan minum para warga WIRP dengan pelayanan terbaik.</p>
+    <p>Dengan tim yang terdiri dari <strong>32 staff aktif</strong> — mulai dari CEO, Chef, hingga Trainer — kami memastikan setiap pesanan diproses dengan cepat dan memuaskan. Kami juga memiliki <strong>sistem order online</strong> tersendiri agar warga WIRP bisa memesan dengan mudah.</p>
+    <div class="about-pills">
+      <div class="pill"><span class="pill-dot"></span>Kuliner In-Game</div>
+      <div class="pill"><span class="pill-dot"></span>Sistem Order Online</div>
+      <div class="pill"><span class="pill-dot"></span>32 Staff Aktif</div>
+      <div class="pill"><span class="pill-dot"></span>Lounge Resmi</div>
+    </div>
+  </div>
+  <div class="about-card reveal">
+    <div class="section-label" style="margin-bottom:1.2rem">Akses Cepat</div>
+    <div class="info-block">
+      <div class="info-row">
+        <div class="info-icon ic1">🍽️</div>
+        <div><div class="info-title">Order Makanan Online</div><div class="info-sub">Pesan via website resmi kami</div></div>
+        <div class="info-action"><a href="https://pedagangwirp.github.io/OrderPwi/" target="_blank" class="btn-sm-gold">Buka</a></div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon ic3">💬</div>
+        <div><div class="info-title">Discord Lounge</div><div class="info-sub">Server instansi Pedagang Warga Indo</div></div>
+        <div class="info-action"><a href="https://discord.gg/8KGVBtvmBj" target="_blank" class="btn-sm-disc">Join</a></div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon" style="background:rgba(230,57,70,0.1)">🦅</div>
+        <div><div class="info-title">Discord WIRP Utama</div><div class="info-sub">Komunitas Warga Indo Roleplay</div></div>
+        <div class="info-action"><a href="https://discord.gg/wargaindo" target="_blank" class="btn-sm-disc">Join</a></div>
+      </div>
+      <div style="padding:1rem 1.2rem;background:rgba(244,196,48,0.05);border:1px solid rgba(244,196,48,0.12);border-radius:12px;font-size:0.81rem;color:var(--muted);line-height:1.6">
+        🍳 <strong style="color:var(--text)">Info:</strong> Kami beroperasi dalam server <strong style="color:var(--text)">SAMP — Warga Indo Roleplay</strong>. Join Discord untuk info lebih lanjut.
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WHY -->
+<section class="why" id="why">
+  <div class="why-inner">
+    <div class="why-header reveal">
+      <div class="section-label">Mengapa Pedagang Warga Indo?</div>
+      <h2 class="section-title">Semua yang Kamu Butuhkan<br/>dalam Satu Instansi</h2>
+      <p>Platform, layanan, dan sistem yang mendukung pengalaman kuliner terbaikmu di dunia WIRP.</p>
+    </div>
+    <div class="why-grid reveal">
+      <div class="why-card">
+        <div class="why-icon ic1">🍜</div>
+        <div class="why-title">Menu Lengkap</div>
+        <p class="why-desc">Tersedia berbagai pilihan makanan dan minuman yang bisa dipesan kapan saja selama instansi aktif beroperasi di WIRP.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon ic2">📱</div>
+        <div class="why-title">Order Online Mudah</div>
+        <p class="why-desc">Sistem pemesanan melalui website resmi yang simpel dan cepat — tanpa ribet, langsung diproses ke dapur kami.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon ic3">👨‍🍳</div>
+        <div class="why-title">Tim Chef Profesional</div>
+        <p class="why-desc">Didukung Head Chef, Chef Trainer, dan tim masak berpengalaman untuk memastikan kualitas setiap pesanan terjaga.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon ic4">⚡</div>
+        <div class="why-title">Pelayanan Cepat</div>
+        <p class="why-desc">Dengan 32 staff aktif yang terorganisir rapi, pesananmu diproses dengan efisien dan tepat waktu setiap saat.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon ic5">🏅</div>
+        <div class="why-title">Jenjang Karir Jelas</div>
+        <p class="why-desc">Bergabunglah sebagai staff dan naiki jenjang dari Trainer hingga CEO dengan sistem manajemen yang transparan.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon ic6">🏠</div>
+        <div class="why-title">Lounge Nyaman</div>
+        <p class="why-desc">Kami memiliki lounge aktif dengan komunitas Discord tersendiri — tempat staff dan pelanggan setia bisa berinteraksi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANAGEMENT -->
+<section class="mgmt-section" id="management">
+  <div class="mgmt-header-row reveal">
+    <div>
+      <div class="section-label">Struktur Organisasi</div>
+      <h2 class="section-title">Lounge Management Data</h2>
+    </div>
+    <div class="total-badge"><strong>32</strong>&nbsp;Total Staff Aktif</div>
+  </div>
+
+  <div class="mgmt-grid reveal">
+    <div class="mgmt-group-card">
+      <div class="mgmt-group-head"><span>👑</span><div class="mgmt-group-name">Chief Executive Officer</div><div class="mgmt-group-count">2</div></div>
+      <div class="mgmt-members">
+        <div class="mgmt-member"><div class="mgmt-avatar av-gold">C</div><div class="mgmt-name">Callen Berlingham</div></div>
+        <div class="mgmt-member"><div class="mgmt-avatar av-gold">H</div><div class="mgmt-name">Hanzo Vanzee</div></div>
+      </div>
+    </div>
+    <div class="mgmt-group-card">
+      <div class="mgmt-group-head"><span>⚙️</span><div class="mgmt-group-name">Chief Operating Officer</div><div class="mgmt-group-count">2</div></div>
+      <div class="mgmt-members">
+        <div class="mgmt-member"><div class="mgmt-avatar av-blue">H</div><div class="mgmt-name">Hansen Setiawan</div></div>
+        <div class="mgmt-member"><div class="mgmt-avatar av-blue">K</div><div class="mgmt-name">Keyaru Louvent</div></div>
+      </div>
+    </div>
+    <div class="mgmt-group-card">
+      <div class="mgmt-group-head"><span>👥</span><div class="mgmt-group-name">Chief Human Resource Officer</div><div class="mgmt-group-count">3</div></div>
+      <div class="mgmt-members">
+        <div class="mgmt-member"><div class="mgmt-avatar av-purple">N</div><div class="mgmt-name">Naisha Mayra<span class="inactive-tag"> · Inactive</span></div></div>
+        <div class="mgmt-member"><div class="mgmt-avatar av-purple">M</div><div class="mgmt-name">Mikazuki Sakuto</div></div>
+        <div class="mgmt-member"><div class="mgmt-avatar av-purple">K</div><div class="mgmt-name">Keshi Louvent</div></div>
+      </div>
+    </div>
+    <div class="mgmt-group-card">
+      <div class="mgmt-group-head"><span>📦</span><div class="mgmt-group-name">COO Assistant / Logistic Manager</div><div class="mgmt-group-count">4</div></div>
+      <div class="mgmt-members">
+        <div class="mgmt-member"><div class="mgmt-avatar av-green">A</div><div class="mgmt-name">Almero Louvent<span class="inactive-tag"> · Inactive</span></div></div>
+        <div class="mgmt-member"><div class="mgmt-avatar av-green">K</div><div class="mgmt-name">Kei Radolf<span class="inactive-tag"> · Inactive</span></div></div>
+        <div class="mgmt-member"><div class="mgmt-avatar av-green">K</div><div class="mgmt-name">Keyra Louvent</div></div>
+        <div class="mgmt-member"><div class="mgmt-avatar av-green">E</div><div class="mgmt-name">Evellyne Xaveira</div></div>
+      </div>
+    </div>
+    <div class="mgmt-group-card">
+      <div class="mgmt-group-head"><span>👨‍🍳</span><div class="mgmt-group-name">Head Chef</div><div class="mgmt-group-count">3</div></div>
+      <div class="mgmt-members">
+        <div class="mgmt-member"><div class="mgmt-avatar av-orange">T</div><div class="mgmt-name">Tzii Marga</div></div>
+        <div class="mgmt-member"><div class="mgmt-avatar av-orange">F</div><div class="mgmt-name">Fearra Walls</div></div>
+        <div class="mgmt-member"><div class="mgmt-avatar av-orange">K</div><div class="mgmt-name">Kalex Sugeni</div></div>
+      </div>
+    </div>
+    <div class="mgmt-group-card">
+      <div class="mgmt-group-head"><span>🍳</span><div class="mgmt-group-name">Chef Trainer</div><div class="mgmt-group-count">1</div></div>
+      <div class="mgmt-members">
+        <div class="mgmt-member"><div class="mgmt-avatar av-red">R</div><div class="mgmt-name">Ray Escobar</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mgmt-wide reveal">
+    <div class="mgmt-group-card">
+      <div class="mgmt-group-head"><span>⭐</span><div class="mgmt-group-name">Senior Staff</div><div class="mgmt-group-count">6</div></div>
+      <div class="mgmt-members-grid">
+        <div class="mgmt-member"><div class="mgmt-avatar av-gold">T</div><div class="mgmt-name">Tukul Sugeni</div></div>
+        <div class="mgmt-member"><div class="mgmt-avatar av-gold">K</div><div class="mgmt-name">Ken Reyers</div></div>
+        <div class="mgmt-member"><div class="mgmt-avatar av-gold">Z</div><div class="mgmt-name">Zulfikar Baharudin</div></div>
+        <div class="mgmt-member"><div class="mgmt-avatar av-gold">C</div><div class="mgmt-name">Chris Aguero</div></div>
+        <div class="mgmt-member"><div class="mgmt-avatar av-gold">B</div><div class="mgmt-name">Boobs Garcigos</div></div>
+        <div class="mgmt-member"><div class="mgmt-avatar av-gold">Y</div><div class="mgmt-name">Yanto Molares</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mgmt-wide reveal" style="margin-top:1.5rem">
+    <div class="mgmt-group-card">
+      <div class="mgmt-group-head"><span>🌱</span><div class="mgmt-group-name">Trainer (Entry Level)</div><div class="mgmt-group-count">11</div></div>
+      <div class="mgmt-members-grid">
+        <div class="mgmt-member"><div class="mgmt-avatar av-blue">S</div><div class="mgmt-name">Sean Junior</div></div>
+        <div class="mgmt-member"><div class="mgmt-avatar av-blue">D</div><div class="mgmt-name">Dalas Supranto</div></div>
+        <div class="mgmt-member"><div class="mgmt-avatar av-blue">D</div><div class="mgmt-name">Daniel Aguero</div></div>
+        <div class="mgmt-member"><div class="mgmt-avatar av-blue">K</div><div class="mgmt-name">Kio Kanaeru</div></div>
+        <div class="mgmt-member"><div class="mgmt-avatar av-blue">R</div><div class="mgmt-name">Raka Bramantyo<span class="inactive-tag"> · Inactive</span></div></div>
+        <div class="mgmt-member"><div class="mgmt-avatar av-blue">A</div><div class="mgmt-name">Asep Pramana</div></div>
+        <div class="mgmt-member"><div class="mgmt-avatar av-blue">D</div><div class="mgmt-name">Dapolz Waverly</div></div>
+        <div class="mgmt-member"><div class="mgmt-avatar av-blue">A</div><div class="mgmt-name">Arega Assegaf</div></div>
+        <div class="mgmt-member"><div class="mgmt-avatar av-blue">J</div><div class="mgmt-name">Jaxon Laventez</div></div>
+        <div class="mgmt-member"><div class="mgmt-avatar av-blue">I</div><div class="mgmt-name">Izam Maulana</div></div>
+        <div class="mgmt-member"><div class="mgmt-avatar av-blue">R</div><div class="mgmt-name">Ricky Jowkins</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-bg"></div>
+  <div class="cta-inner reveal">
+    <h2>Lapar? <span class="gold-txt">Pesan Sekarang!</span></h2>
+    <p>Nikmati berbagai pilihan makanan dan minuman dari Pedagang Warga Indo — instansi kuliner terpercaya di server WIRP. Order mudah, pelayanan cepat, staff siap melayani.</p>
+    <div class="cta-btns">
+      <a href="https://pedagangwirp.github.io/OrderPwi/" target="_blank" class="btn-gold">🍽️ Buka Menu & Order</a>
+      <a href="https://discord.gg/8KGVBtvmBj" target="_blank" class="btn-ghost">💬 Discord Lounge</a>
+    </div>
+    <p style="margin-top:1.5rem;font-size:0.77rem;color:var(--muted)">Aktif setiap hari · 32 Staff siap melayani · Instansi resmi WIRP</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    <img src="logo_pedagang.png" alt="Pedagang Warga Indo" class="foot-main"/>
+    <div class="foot-div"></div>
+    <img src="logo_wirp.png" alt="WIRP" class="foot-wirp"/>
+    <div>
+      <div class="footer-brand">Pedagang Warga Indo</div>
+      <div class="footer-copy">© 2025 Pedagang Warga Indo · Instansi WIRP</div>
+      <div class="footer-credit">Website by <span>Keyaru Louvent</span></div>
+    </div>
+  </div>
+  <ul class="footer-links">
+    <li><a href="https://pedagangwirp.github.io/OrderPwi/" target="_blank">Order Makanan</a></li>
+    <li><a href="https://discord.gg/8KGVBtvmBj" target="_blank">Discord Lounge</a></li>
+    <li><a href="https://discord.gg/wargaindo" target="_blank">Discord WIRP</a></li>
+  </ul>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll(".reveal");
+  const obs = new IntersectionObserver((e) => {
+    e.forEach((el, i) => { if(el.isIntersecting) setTimeout(()=>el.target.classList.add("visible"), i*80); });
+  }, {threshold:0.1});
+  reveals.forEach(el => obs.observe(el));
+
+  const sObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting) {
+        e.target.querySelectorAll(".stat-num").forEach(el => {
+          const target = parseInt(el.dataset.target);
+          let cur = 0; const step = target/60;
+          const t = setInterval(() => {
+            cur += step;
+            if(cur >= target) { cur = target; clearInterval(t); }
+            el.textContent = Math.floor(cur) + "+";
+          }, 16);
+        });
+        sObs.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.5});
+  const hs = document.querySelector(".hero-stats");
+  if(hs) sObs.observe(hs);
+</script>
+</body>
+</html>
